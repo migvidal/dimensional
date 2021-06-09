@@ -34,7 +34,7 @@ function incluirImagen() {
     }
     console.log(form);
     const url = modelViewer.toDataURL();
-    let output = url.replace(/^data:image\/(png|jpg);base64,/, "");
+        let output = url.replace(/^data:image\/(png|jpg);base64,/, "");
     const a = document.createElement("a");
     a.href = url;
     a.id = 'botonCrearMiniatura';

@@ -61,14 +61,23 @@ function insertModelo($titulo, $ruta, $miniatura, $categ, $usuario)  {
     return $con->getNumRows();
 }
 
+function deleteModelo($idModelo)  {
+    $con = crearConexion();
+    $sql = "DELETE FROM modelo
+            WHERE id_modelo = {$idModelo};";
+    $con->hacerConsulta($sql);
+    return $con->getNumRows();
+}
+
 
 /* sesiones */
 /* usar en upload, etc. */
 function checkRedireccionarLogin() {
-    if (isset($_SESSION['id_usuario'])) {
-        header("Location:".$_SERVER['PHP_SELF']);
+    if (!isset($_SESSION['id_usuario'])) {
+        //header("Location:".$_SERVER['PHP_SELF']);
+        header('Location:login.php');
     }
-header('Location:login.php');
+//header('Location:login.php');
 }
 
 /* END BDD*/

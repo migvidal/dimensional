@@ -9,6 +9,8 @@ if (!isset($_SESSION['id_usuario'])) {
 /* END Comprobar sesion */
 
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,11 +34,17 @@ if (!isset($_SESSION['id_usuario'])) {
         <h1>Seleccionar archivo</h1>
 
         <form action="preview_upload.php" method="post" enctype="multipart/form-data">
-            <label for="categoria">Categoría: </label>
-            <?php include 'select_categorias.php'?>
-            <br>
-
             <label for="archivo-modelo">Archivo (solo extensiones .x o .y): </label>
             <input type="file" name="archivo-modelo" id="archivo-modelo">
             <input type="submit" name="submit" value="Subir">
         </form>
+
+    <?php
+    /* comprobar mensajes error */
+    if (isset($_SESSION['error'])) {
+        $mensaje = $_SESSION['error'];
+        include ('includes/mensaje_info.php');
+        unset($_SESSION['error']);
+    }
+    /* END comprobar mensajes error */
+    ?>

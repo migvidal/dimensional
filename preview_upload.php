@@ -11,9 +11,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
 //comprobar formulario completado
 if (!is_uploaded_file($_FILES["archivo-modelo"]["tmp_name"])) {
-// comprobar formato archivo
     header('Location: upload.php');
 }
+$archivoModelo = $_FILES["archivo-modelo"];
+
+
+
 // sanitize y filter
 // ...
 
@@ -26,7 +29,14 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // obtener datos
 $extension = pathinfo($_FILES["archivo-modelo"]["name"], PATHINFO_EXTENSION);
-//echo $extension;
+
+
+// check extension archivo
+
+if (strcmp($extension, 'glb') != 0 ) {
+    $_SESSION['error'] = 'Extensión incorrecta';
+    header('Location: upload.php');
+}
 
 
 // Check file size
@@ -67,15 +77,16 @@ $_SESSION['ruta_modelo'] = $rutaModelo;
     <body>
     <div class="wrapper">
         <h1>Datos</h1>
-        <div class="modelo">
+        <div class="modelo preview">
             <!-- previsualización -->
             <model-viewer class='mv' loading='lazy' src='<?php echo $target_file; ?>' alt='' camera-controls disable-zoom></model-viewer>
             <!-- /previsualización -->
+            <i>Mueve con el ratón para girar</i>
         </div>
-        <i>Mueve con el ratón para girar</i>
+
         <br>
         <br>
-        <form action="realizar_upload.php" method="POST">
+        <form id="datos-subida" action="realizar_upload.php" method="POST">
             <label for="titulo">Título del objeto: </label>
             <input type="text" name="titulo" id="titulo">
             <br>
@@ -83,41 +94,17 @@ $_SESSION['ruta_modelo'] = $rutaModelo;
             <?php include 'select_categorias.php'?>
             <br>
             <label for="miniatura">Miniatura: </label>
-            <!-- miniatura -->
-            <div id="miniatura-preview">
-                <button type="button" id="downloadPoster">Crear miniatura</button>
-                <!-- /miniatura -->
+
                 <input type="submit" name="sub" value="Enviar">
         </form>
-    </div>
+        <!-- miniatura -->
+        <div id="miniatura-preview">
+            <button type="button" id="downloadPoster">Crear miniatura</button>
+            <!-- /miniatura -->
+        </div>
+        <form action="eliminar_upload.php" method="POST">
+            <input type="submit" name="submit" value="Cancelar">
+        </form>
     </div>
     </body>
     </html>
-
-<?php
-
-// Dar respuesta
-
-// Comprobar que la extensión es .glb o .glTF
-/*var_dump($_FILES["archivo-modelo"]["name"]);
-
-    $check = getimagesize($_FILES["archivo-modelo"]["name"]);
-    var_dump($check);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }*/
-// Insertar en BDD
-/*$titulo = $_POST['titulo'];
-$ruta = $target_file;
-$miniatura = generarMiniatura();
-$categ = $_POST['categoria'];
-$usuario = $_POST['id_usuario'];
-var_dump($titulo, $ruta, $categ, $usuario);*/
-//insertModelo($titulo, $ruta, $miniatura, $categ, $usuario)
-
-
-?>
