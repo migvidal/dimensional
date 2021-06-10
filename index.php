@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +15,7 @@
     <div class="wrapper">
         <!-- header nav -->
         <?php
-            include 'header.php';
+            include_once 'includes/header.php';
         ?>
 
         <div class="hero">
@@ -24,7 +26,7 @@
             <h2>Destacados</h2>
 
             <?php
-                include 'tarjetas_inicio.php';
+                include 'includes/tarjetas_inicio.php';
             ?>
 
 
@@ -44,7 +46,7 @@
         </section>
 
         <?php
-            include 'footer.php';
+            include_once 'includes/footer.php';
         ?>
     </div>
 </body>

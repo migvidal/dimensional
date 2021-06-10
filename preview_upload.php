@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-include 'funciones.php';
+include 'includes/funciones.php';
 
 /* Comprobar sesion */
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location:".$_SERVER['HTTP_REFERER']);
+    header("Location:index.php");
 }
 /* END Comprobar sesion */
 
@@ -91,7 +91,7 @@ $_SESSION['ruta_modelo'] = $rutaModelo;
             <input type="text" name="titulo" id="titulo">
             <br>
             <label for="categoria">Categoría: </label>
-            <?php include 'select_categorias.php'?>
+            <?php include 'includes/select_categorias.php'?>
             <br>
             <label for="miniatura">Miniatura: </label>
 

@@ -2,7 +2,7 @@
 <?php
 /* obtener datos */
 
-require_once 'funciones.php';
+require_once 'includes/funciones.php';
 
 if (isset($categoria)) {
     $campos = ['id_modelo', 'titulo', 'miniatura'];

@@ -15,9 +15,9 @@
 
 
         <?php
-        include_once 'header.php';
-        include_once 'visor_modelo.php';
-        include_once 'footer.php';
+        include_once 'includes/header.php';
+        include_once 'includes/visor_modelo.php';
+        include_once 'includes/footer.php';
         ?>
 <div class="wrapper">
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('funciones.php');
+include('includes/funciones.php');
 
 if (!isset($_SESSION['id_usuario'], $_SESSION['ruta_modelo'], $_POST['submit'])) {
     header('Location:index.php');
@@ -14,6 +14,7 @@ if (unlink($_SESSION['ruta_modelo'])) {
 }
 
 // mensaje info
+$esInfo = false;
 include ('includes/mensaje_info.php');
 
 // redireccionar a upload

@@ -1,16 +1,9 @@
 <?php
 session_start();
-
+require_once ('includes/funciones.php');
 
 /* Comprobar sesion */
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location:".$_SERVER['HTTP_REFERER']);
-}
-/* END Comprobar sesion */
-
-
-
-
+checkSesion();
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +21,7 @@ if (!isset($_SESSION['id_usuario'])) {
 <div class="wrapper">
     <!-- header nav -->
     <?php
-    include 'header.php';
+    include_once 'includes/header.php';
     ?>
 
         <h1>Seleccionar archivo</h1>
@@ -43,6 +36,7 @@ if (!isset($_SESSION['id_usuario'])) {
     /* comprobar mensajes error */
     if (isset($_SESSION['error'])) {
         $mensaje = $_SESSION['error'];
+        $esInfo = false;
         include ('includes/mensaje_info.php');
         unset($_SESSION['error']);
     }

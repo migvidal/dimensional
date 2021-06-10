@@ -1,5 +1,5 @@
 <?php
-include 'funciones.php';
+include 'includes/funciones.php';
 session_start();
 
 /* Comprobar sesion y variables */

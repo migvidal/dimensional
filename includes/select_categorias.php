@@ -1,4 +1,4 @@
-<?php require_once 'funciones.php'?>
+<?php require_once 'includes/funciones.php' ?>
 
 
     <?php

@@ -35,21 +35,30 @@ function selectModelo($campos, $tabla, $id_modelo, $categoria) {
     return $filas;
 }
 
-function selectUsuarios($usuario) {
+function selectUsuarios($usuario = null) {
     $con = crearConexion();
+    //sql
     $sql = "SELECT *
-            FROM usuario
-            WHERE nombre_usuario = '$usuario';";
+            FROM usuario";
+    if ($usuario != null) {
+        $sql .= " WHERE nombre_usuario = '$usuario'";
+    }
+    $sql .= ";";
+    var_dump($sql);
+    //consulta
     $con->hacerConsulta($sql);
     if ($con->getNumRows() === 0) {
         return false;
     }
     $filas = $con->getRows();
-    $con->disconnect();//quitar esto?
-    /* es solo una fila */
-    $fila = $filas[0];
 
-    return $fila;
+    /* si es solo una fila */
+    if ($con->getNumRows() < 2) {
+        $fila = $filas[0];
+        return $fila;
+    }
+    $con->disconnect();
+    return $filas;
 }
 
 
@@ -58,16 +67,37 @@ function insertModelo($titulo, $ruta, $miniatura, $categ, $usuario)  {
     $sql = "INSERT INTO modelo (titulo, ruta, miniatura, categoria, usuario)
             VALUES ('$titulo', '$ruta', '$miniatura', $categ, $usuario);";
     $con->hacerConsulta($sql);
+    $con->disconnect();
     return $con->getNumRows();
 }
+function insertUsuario($nombre_usuario, $pass)  {
+    $con = crearConexion();
+    $sql = "INSERT INTO usuario (nombre_usuario, "."pass".")
+            VALUES ('$nombre_usuario', '$pass');";
+    $con->hacerConsulta($sql);
+    $con->disconnect();
+    return;
+}
+
+
+
+//delete
 
 function deleteModelo($idModelo)  {
     $con = crearConexion();
     $sql = "DELETE FROM modelo
             WHERE id_modelo = {$idModelo};";
     $con->hacerConsulta($sql);
+    $con->disconnect();
     return $con->getNumRows();
 }
+
+function deleteUsuario($usuario) {
+
+}
+
+
+
 
 
 /* sesiones */
@@ -78,6 +108,17 @@ function checkRedireccionarLogin() {
         header('Location:login.php');
     }
 //header('Location:login.php');
+
+}
+
+function checkSesion() {
+    if (!isset($_SESSION['id_usuario'])) {
+        // si no se ha iniciado sesión, regresa a la página
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            header('Location:'.$_SERVER['HTTP_REFERER']);
+        // o vuelve al index
+        } header('Location:login.php');
+    }
 }
 
 /* END BDD*/

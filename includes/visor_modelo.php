@@ -1,7 +1,7 @@
 <?php
 /* obtener datos */
 
-require_once 'funciones.php';
+require_once 'includes/funciones.php';
 
 if (isset($_GET['id_modelo'])) {
     $campos = ['titulo', 'ruta', 'miniatura'];

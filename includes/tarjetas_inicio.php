@@ -1,7 +1,7 @@
 <?php
 /* obtener datos */
 
-require_once 'funciones.php';
+require_once 'includes/funciones.php';
 
 $campos = ['id_modelo', 'titulo', 'miniatura'];
 $resultado = selectModelo($campos, 'modelo', null, null);

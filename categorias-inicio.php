@@ -1,6 +1,6 @@
 <!--seleccionar categorias-->
 <?php
-    require_once 'funciones.php';
+    require_once 'includes/funciones.php';
     $campos = ['id_categ', 'nombre_categ'];
     $resultado = selectModelo($campos, 'categoria', null, null);
 ?>

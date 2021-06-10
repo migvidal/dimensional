@@ -9,6 +9,7 @@ if (!isset($_SESSION['id_usuario'])) {
 /* END Comprobar sesion */
 
 session_destroy();
+
 if (isset($_SERVER['HTTP_REFERER'])) {
     header('Location:'.$_SERVER['HTTP_REFERER']);
 } header('Location:index.php');
