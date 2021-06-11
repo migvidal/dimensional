@@ -1,8 +1,9 @@
 <?php
-session_start();
+
 include 'includes/funciones.php';
 if (isset($_POST['user'], $_POST['pass'])) {
     /* comparar con la BDD */
+
         /* obtener usuario */
         $datosUsuario = selectUsuarios($_POST['user']);
 
@@ -22,6 +23,9 @@ if (isset($_POST['user'], $_POST['pass'])) {
         }
 }
 
-    /* si no existe o faltan datos por introducir, volver a login */
+/* si no existe o faltan datos por introducir */
+    // Mensaje de error
+    crearMensaje('Usuario o contraseña incorrectos', 3);
+    // Volver a login
     header('Location: login.php');
 ?>

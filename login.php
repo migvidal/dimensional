@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once ('includes/funciones.php');
 
 /* Comprobar sesion */
 if (isset($_SESSION['id_usuario'])) {
@@ -43,6 +43,11 @@ if (isset($_SERVER['HTTP_REFERER'])) {
         <span>No tienes cuenta? <a href="crear_cuenta.php">Crear cuenta</a></span>
     </div>
 </div>
+
+
+<!-- Mensajes info  -->
+<?php mostrarMensaje(); ?>
+
 </body>
 </html>
 

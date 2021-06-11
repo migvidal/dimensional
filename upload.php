@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once ('includes/funciones.php');
 
 /* Comprobar sesion */
@@ -24,21 +24,17 @@ checkSesion();
     include_once 'includes/header.php';
     ?>
 
-        <h1>Seleccionar archivo</h1>
+    <h1>Seleccionar archivo</h1>
 
-        <form action="preview_upload.php" method="post" enctype="multipart/form-data">
-            <label for="archivo-modelo">Archivo (solo extensiones .x o .y): </label>
-            <input type="file" name="archivo-modelo" id="archivo-modelo">
-            <input type="submit" name="submit" value="Subir">
-        </form>
+    <form action="preview_upload.php" method="post" enctype="multipart/form-data">
+        <label for="archivo-modelo">Archivo (solo extensiones .x o .y): </label>
+        <input type="file" name="archivo-modelo" id="archivo-modelo">
+        <input type="submit" name="submit" value="Subir">
+    </form>
+</div>
 
-    <?php
-    /* comprobar mensajes error */
-    if (isset($_SESSION['error'])) {
-        $mensaje = $_SESSION['error'];
-        $esInfo = false;
-        include ('includes/mensaje_info.php');
-        unset($_SESSION['error']);
-    }
-    /* END comprobar mensajes error */
-    ?>
+<!-- Mensajes error -->
+<?php mostrarMensaje(); ?>
+
+</body>
+</html>

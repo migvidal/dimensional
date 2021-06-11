@@ -2,6 +2,38 @@
 
 require_once('database.php');
 
+/* utilidades */
+function mempty() { // multiple empty
+    foreach(func_get_args() as $arg) {
+        if(empty($arg))
+            return true;
+    }
+    return false;
+}
+
+
+/* mensajes al usuario */
+
+function crearMensaje($mensaje, $tipo) {
+    $_SESSION['mensaje'] = $mensaje;
+    $_SESSION['tipo-mensaje'] = $tipo; //1-exito, 2-info, 3-error
+    header('Location: upload.php');
+}
+
+function mostrarMensaje() {
+
+    global $_SESSION;
+
+    if (isset($_SESSION["mensaje"], $_SESSION["tipo-mensaje"])) {
+        $mensaje = $_SESSION["mensaje"];
+        $tipoMensaje = $_SESSION["tipo-mensaje"];
+        include_once ('includes/mensaje_info.php');
+        unset($_SESSION["mensaje"]);
+        unset($_SESSION["tipo-mensaje"]);
+    }
+}
+
+
 /*BDD*/
 function crearConexion() {
     if (!isset($db) || $db === NULL) {
@@ -31,12 +63,12 @@ function selectModelo($campos, $tabla, $id_modelo, $categoria) {
     $con->hacerConsulta($sql);
     $filas = $con->getRows();
     $con->disconnect();//quitar esto?
-    /*var_dump($sql);*/
     return $filas;
 }
 
 function selectUsuarios($usuario = null) {
     $con = crearConexion();
+
     //sql
     $sql = "SELECT *
             FROM usuario";
@@ -44,7 +76,6 @@ function selectUsuarios($usuario = null) {
         $sql .= " WHERE nombre_usuario = '$usuario'";
     }
     $sql .= ";";
-    var_dump($sql);
     //consulta
     $con->hacerConsulta($sql);
     if ($con->getNumRows() === 0) {

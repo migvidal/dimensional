@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include('includes/funciones.php');
 
 if (!isset($_SESSION['id_usuario'], $_SESSION['ruta_modelo'], $_POST['submit'])) {

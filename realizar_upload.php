@@ -1,6 +1,6 @@
 <?php
 include 'includes/funciones.php';
-session_start();
+
 
 /* Comprobar sesion y variables */
 if (!isset(
@@ -10,6 +10,7 @@ if (!isset(
     $_POST['categoria'],
     $_POST['miniatura'])
 ) {
+    crearMensaje('Faltan datos, 2');
     header("Location:index.php");
 }
 /* END Comprobar sesion y variables */
@@ -20,15 +21,21 @@ $titulo = $_POST['titulo'];
 $ruta = $_SESSION['ruta_modelo'];
 // END PrepararDatos
 
-
+// mensaje error y volver
 if (!textoCorrecto($titulo)) {
-    header('Location:preview_upload.php');
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        $_SESSION['mensaje'] = 'Título incorrecto';
+        $_SESSION['tipo-mensaje'] = 3;
+        header('Location:'.$_SERVER['HTTP_REFERER']); //preview_upload
+    } else {
+        header('Location:index.php');
+    }
 }
 
 
 
 
-$miniatura = $decocedData = base64_decode($_POST['miniatura']);
+$miniatura = base64_decode($_POST['miniatura']);
 
 var_dump($categ, $idUsuario, $titulo, $ruta, $miniatura);
 

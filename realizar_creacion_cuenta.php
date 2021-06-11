@@ -1,15 +1,19 @@
 <?php
-session_start();
+
 include_once ('includes/funciones.php');
 
 // recibir datos formulario
     //comprobar
-if (!isset(
-    $_POST['nuevousuario'],
-    $_POST['nuevapass'],
-    $_POST['confirmapass'])
-) {
+if (!isset($_POST['nuevousuario'], $_POST['nuevapass'], $_POST['confirmapass'])) {
+    header("Location:index.php");
+    exit();
+}
+
+
+if (mempty($_POST['nuevousuario'], $_POST['nuevapass'], $_POST['confirmapass'])) {
+    crearMensaje('Faltan datos', 3);
     header("Location:crear_cuenta.php");
+    exit();
 }
     //asignar
     $nuevoUsuario = $_POST['nuevousuario'];
@@ -20,11 +24,15 @@ if (!isset(
 
     //usuario
     if ($nuevoUsuario == null) {
+        crearMensaje('Falta el nombre de usuario', 3);
         header("Location:crear_cuenta.php");
+        exit();
     }
     //contraseña
     if (strcmp($nuevaPass, $confirmaPass) !== 0) {
+        crearMensaje('Las contraseñas no coinciden', 3);
         header("Location:crear_cuenta.php");
+        exit();
     }
     //que no exista ya
     $usuarios = selectUsuarios();
@@ -32,8 +40,6 @@ if (!isset(
     foreach ($usuarios as $fila=>$datos) {
 
         if(strcmp($nuevoUsuario, $datos['nombre_usuario']) == 0) {
-            // vuelta y mensaje error
-            header("Location:crear_cuenta.php");
             $yaExiste = true;
         }
     }
@@ -45,8 +51,14 @@ if (!$yaExiste) {
     // mensaje info
     $esInfo = true;
     $mensaje = 'Cuenta creada con éxito';
-    include_once ('includes/mensaje_info_fullscreen.php');
 
+    crearMensaje('Cuenta creada',1);
+    header("Location:mensaje_info_fullscreen.php");
+
+} else {
+    crearMensaje('El nombre de usuario ya existe', 3);
+    header("Location:crear_cuenta.php");
+    exit();
 }
 
 ?>

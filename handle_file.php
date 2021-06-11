@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 //comprobar formulario completado
 if (!is_uploaded_file($_FILES["archivo-modelo"]["tmp_name"])) {
 // comprobar formato archivo

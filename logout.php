@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 /* Comprobar sesion */
 if (!isset($_SESSION['id_usuario'])) {

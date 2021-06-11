@@ -1,11 +1,16 @@
 <?php
 
-session_start();
+
 include 'includes/funciones.php';
+
+/* Mensajes error */
+mostrarMensaje();
+
 
 /* Comprobar sesion */
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location:index.php");
+    header("Location:login.php");
+    crearMensaje('Primero debes iniciar sesión', 2);
 }
 /* END Comprobar sesion */
 
@@ -31,10 +36,10 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $extension = pathinfo($_FILES["archivo-modelo"]["name"], PATHINFO_EXTENSION);
 
 
-// check extension archivo
-
+// mensaje error y volver
 if (strcmp($extension, 'glb') != 0 ) {
-    $_SESSION['error'] = 'Extensión incorrecta';
+    $_SESSION['mensaje'] = 'Extensión incorrecta';
+    $_SESSION['tipo-mensaje'] = 3;
     header('Location: upload.php');
 }
 
@@ -47,7 +52,9 @@ if ($_FILES["archivo-modelo"]["size"] > 500000) {
 
 // Comprobar si error
 if ($uploadOk == 0) {
-    echo 'Error';
+    $_SESSION['mensaje'] = 'Error al subir archivo';
+    $_SESSION['tipo-mensaje'] = 3;
+    header('Location: upload.php');
 } else {
     //subir
     if(is_uploaded_file($_FILES["archivo-modelo"]["tmp_name"])){
