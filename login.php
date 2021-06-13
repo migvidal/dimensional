@@ -2,7 +2,7 @@
 require_once ('includes/funciones.php');
 
 /* Comprobar sesion */
-if (isset($_SESSION['id_usuario'])) {
+if (isset($_SESSION['user_id'])) {
     if (isset($_SERVER['HTTP_REFERER'])) {
         // si se ha iniciado sesión, regresa a la página
         header('Location:'.$_SERVER['HTTP_REFERER']);
@@ -41,12 +41,13 @@ if (isset($_SERVER['HTTP_REFERER'])) {
             <input type="submit" value="Iniciar sesión">
         </form>
         <span>No tienes cuenta? <a href="crear_cuenta.php">Crear cuenta</a></span>
+        <!-- Mensajes info  -->
+        <?php include('includes/mensaje_info.php'); ?>
     </div>
 </div>
 
 
-<!-- Mensajes info  -->
-<?php mostrarMensaje(); ?>
+
 
 </body>
 </html>

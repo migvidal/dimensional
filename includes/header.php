@@ -6,7 +6,7 @@
             <li><a href='#'>Buscar</a></li>
             <li><a href='upload.php'>Subir</a></li>
             <li>
-            <?php if (isset($_SESSION['id_usuario'])) {; ?>
+            <?php if (isset($_SESSION['user_id'])) {; ?>
                     <ul>
                         <li><b><?php echo $_SESSION['nombre_usuario']; ?></b></li>
                         <li><a href='logout.php'>Cerrar sesión</a></li>

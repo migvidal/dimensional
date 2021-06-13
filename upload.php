@@ -34,7 +34,7 @@ checkSesion();
 </div>
 
 <!-- Mensajes error -->
-<?php mostrarMensaje(); ?>
+<?php include('includes/mensaje_info.php'); ?>
 
 </body>
 </html>

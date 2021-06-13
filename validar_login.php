@@ -11,7 +11,7 @@ if (isset($_POST['user'], $_POST['pass'])) {
         /* si hay resultado, ver si pass coincide */
         if ($datosUsuario && strcmp($datosUsuario['pass'], $_POST['pass']) == 0) {
             /* si pass coincide, guardar sesion y mandar a la página destino */
-            $_SESSION['id_usuario'] = $datosUsuario['id_usuario'];
+            $_SESSION['user_id'] = $datosUsuario['id_usuario'];
             $_SESSION['nombre_usuario'] = $datosUsuario['nombre_usuario'];
 
             // mandar a destino
@@ -28,4 +28,5 @@ if (isset($_POST['user'], $_POST['pass'])) {
     crearMensaje('Usuario o contraseña incorrectos', 3);
     // Volver a login
     header('Location: login.php');
+    exit();
 ?>

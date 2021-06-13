@@ -32,7 +32,7 @@
             <input type="submit" value="Crear cuenta">
         </form>
         <span>¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></span>
-        <?php mostrarMensaje(); ?>
+        <?php include('includes/mensaje_info.php'); ?>
     </div>
 </div>
 </body>

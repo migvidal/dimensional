@@ -8,7 +8,7 @@ mostrarMensaje();
 
 
 /* Comprobar sesion */
-if (!isset($_SESSION['id_usuario'])) {
+if (!isset($_SESSION['user_id'])) {
     header("Location:login.php");
     crearMensaje('Primero debes iniciar sesión', 2);
 }

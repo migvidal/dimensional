@@ -4,7 +4,7 @@ include 'includes/funciones.php';
 
 /* Comprobar sesion y variables */
 if (!isset(
-    $_SESSION['id_usuario'],
+    $_SESSION['user_id'],
     $_SESSION['ruta_modelo'],
     $_POST['titulo'],
     $_POST['categoria'],
@@ -16,7 +16,7 @@ if (!isset(
 /* END Comprobar sesion y variables */
 // PrepararDatos
 $categ = $_POST['categoria'];
-$idUsuario = $_SESSION['id_usuario'];
+$idUsuario = $_SESSION['user_id'];
 $titulo = $_POST['titulo'];
 $ruta = $_SESSION['ruta_modelo'];
 // END PrepararDatos

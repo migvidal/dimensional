@@ -4,6 +4,7 @@
 if (!is_uploaded_file($_FILES["archivo-modelo"]["tmp_name"])) {
 // comprobar formato archivo
     header('Location: upload.php');
+    exit();
 }
 // sanitize y filter
 // ...

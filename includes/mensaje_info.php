@@ -1,23 +1,14 @@
-<div class="wrapper">
-
 <?php
-    switch ($tipoMensaje) {
-        case 1:
-            $class = 'mensaje-exito';
-            break;
-        case 2:
-            $class = 'mensaje-info';
-            break;
-        case 3:
-            $class = 'mensaje-error';
-            break;
-        default:
-            $class = 'mensaje-generico';
-            break;
-    }
+include_once ('includes/funciones.php');
+$datosMensaje = mostrarMensaje();
+if(!$datosMensaje) {
+    // si no hay mensaje, exit
+    exit();
+}
 ?>
 
-    <div class="<?php echo $class; ?>">
-        <?php echo $mensaje; ?>
+<div class="wrapper">
+    <div class="<?php echo $datosMensaje[1]; ?>">
+        <?php echo $datosMensaje[0]; ?>
     </div>
 </div>

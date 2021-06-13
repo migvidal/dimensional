@@ -49,11 +49,8 @@ if (!$yaExiste) {
     insertUsuario($nuevoUsuario, $nuevaPass);
 
     // mensaje info
-    $esInfo = true;
-    $mensaje = 'Cuenta creada con éxito';
-
-    crearMensaje('Cuenta creada',1);
-    header("Location:mensaje_info_fullscreen.php");
+    crearMensaje('Cuenta creada con éxito',1);
+    header("Location:mensaje_fullscreen.php");
 
 } else {
     crearMensaje('El nombre de usuario ya existe', 3);
