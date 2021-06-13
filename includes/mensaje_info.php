@@ -1,10 +1,7 @@
 <?php
 include_once ('includes/funciones.php');
 $datosMensaje = mostrarMensaje();
-if(!$datosMensaje) {
-    // si no hay mensaje, exit
-    exit();
-}
+if($datosMensaje) {
 ?>
 
 <div class="wrapper">
@@ -12,3 +9,6 @@ if(!$datosMensaje) {
         <?php echo $datosMensaje[0]; ?>
     </div>
 </div>
+<?php
+}
+    ?>

@@ -17,8 +17,10 @@ if (isset($_POST['user'], $_POST['pass'])) {
             // mandar a destino
             if (isset($_SESSION['destino'])) {
                 header('Location:'.$_SESSION['destino']);
+                exit();
             } else {
                 header('Location:index.php');
+                exit();
             }
         }
 }

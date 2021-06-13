@@ -13,6 +13,12 @@ if (!isset($_GET['id_modelo'])) {
 // modelo
 $campos = ['titulo', 'ruta', 'miniatura', 'usuario'];
 $resultadoModelo = selectModelo($campos, 'modelo', $_GET['id_modelo'], null);
+
+// si modelo no existe, volver
+if (empty($resultadoModelo)) {
+    redirigirRefIndex();
+}
+
 foreach ($resultadoModelo as $fila) {
     extract($fila);
 }
@@ -39,6 +45,7 @@ extract($resultadoUsuario);
     include_once ('includes/head.php');
     ?>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -59,7 +66,12 @@ extract($resultadoUsuario);
 
         <div class="info-modelo">
             <h1><?php echo $titulo; ?></h1>
-            <h5><?php echo "Autor: $nombre_usuario";?></h5>
+
+            <h5>Autor:
+                <a href="usuario.php?u=<?php echo $nombre_usuario;?>">
+                    <?php echo $nombre_usuario;?>
+                </a>
+            </h5>
         </div>
         <div class="controles-modelo">
 
@@ -67,9 +79,13 @@ extract($resultadoUsuario);
             /* Mostrar botón de 'borrar' si el usuario es el autor */
             if (isset($_SESSION['user_id']) && $usuario == $_SESSION['user_id']) {
                 ?>
-                <form action="eliminar_upload.php" method="post">
+                <form class="form-eliminar" action="eliminar_upload.php" method="post">
                     <input hidden class="display-none" type="text" name="id_modelo"
                            value="<?php echo $_GET['id_modelo']; ?>">
+                    <input hidden class="display-none" type="text" name="ruta_modelo"
+                           value="<?php echo $ruta; ?>">
+                    <input hidden class="display-none" type="text" name="ruta_miniatura"
+                           value="<?php echo $miniatura; ?>">
                     <input class="btn-eliminar" name="submit" type="submit" value="Eliminar">
                 </form>
                 <?php

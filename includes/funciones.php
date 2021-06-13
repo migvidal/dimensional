@@ -10,6 +10,17 @@ function mempty() { // multiple empty
     }
     return false;
 }
+function redirigirRefIndex() {
+    // si no se ha iniciado sesión, regresa a la página
+    if (isset($_SERVER['HTTP_REFERER'])) {
+        header('Location:'.$_SERVER['HTTP_REFERER']);
+        exit();
+        // o vuelve al index
+    }
+    header('Location:login.php');
+    exit();
+
+}
 
 
 /* mensajes al usuario */
@@ -151,6 +162,7 @@ function deleteModelo($idModelo)  {
     $con = crearConexion();
     $sql = "DELETE FROM modelo
             WHERE id_modelo = {$idModelo};";
+    var_dump($sql);
     $con->hacerConsulta($sql);
     $con->disconnect();
     return $con->getNumRows();
@@ -177,11 +189,7 @@ function checkRedireccionarLogin() {
 
 function checkSesion() {
     if (!isset($_SESSION['user_id'])) {
-        // si no se ha iniciado sesión, regresa a la página
-        if (isset($_SERVER['HTTP_REFERER'])) {
-            header('Location:'.$_SERVER['HTTP_REFERER']);
-            // o vuelve al index
-        } header('Location:login.php');
+        redirigirRefIndex();
     }
 }
 

@@ -18,6 +18,10 @@
             include_once 'includes/header.php';
         ?>
 
+        <?php
+        include ('includes/mensaje_info.php');
+        ?>
+
         <div class="hero">
             <h2>Hero</h2>
         </div>

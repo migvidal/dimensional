@@ -79,7 +79,7 @@ $_SESSION['ruta_modelo'] = $rutaModelo;
         <title>Preview - Dimesional</title>
         <link rel="stylesheet" href="style.css">
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-        <script src="script.js" defer></script>
+        <script src="scriptEspecifico.js" defer></script>
     </head>
     <body>
     <div class="wrapper">
