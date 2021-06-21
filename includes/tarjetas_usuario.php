@@ -4,7 +4,7 @@
 require_once 'includes/funciones.php';
 
 $campos = ['id_modelo', 'titulo', 'miniatura'];
-$resultado = selectModelo($campos, null, null, null);
+$resultado = selectModelo($campos, null, null, $id_usuario);
 
 
 foreach ($resultado as $fila) {//TODO poner límite, arreglar subrayado rojo

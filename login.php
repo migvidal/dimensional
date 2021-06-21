@@ -1,13 +1,14 @@
 <?php
-require_once ('includes/funciones.php');
+require_once('includes/funciones.php');
 
 /* Comprobar sesion */
 if (isset($_SESSION['user_id'])) {
     if (isset($_SERVER['HTTP_REFERER'])) {
         // si se ha iniciado sesión, regresa a la página
-        header('Location:'.$_SERVER['HTTP_REFERER']);
+        header('Location:' . $_SERVER['HTTP_REFERER']);
         // o vuelve al index
-    } header('Location:index.php');
+    }
+    header('Location:index.php');
 }
 /* END Comprobar sesion */
 
@@ -26,7 +27,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-viejo.css">
 </head>
 <body>
 <div class="wrapper">
@@ -45,8 +46,6 @@ if (isset($_SERVER['HTTP_REFERER'])) {
         <?php include('includes/mensaje_info.php'); ?>
     </div>
 </div>
-
-
 
 
 </body>

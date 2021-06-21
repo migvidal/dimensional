@@ -10,7 +10,6 @@
     --gris: #535353;
     --gris-claro: gray;
     --gris-muy-claro: #dddddd;
-    --color-principal: #00f8fe;
 }
 
 /* normalizar */
@@ -89,10 +88,10 @@ section ul > li {
     text-decoration: none;
 }
 #barra-menu a:hover {
-    color: var(--color-principal);
+    color: #00f8fe;
 }
 #barra-menu a:target {
-    border-bottom: 1px solid var(--color-principal);
+    border-bottom: 1px solid #00f8fe;
 }
 
 /* mensaje error/info */

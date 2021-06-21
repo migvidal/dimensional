@@ -31,9 +31,9 @@ if ($uploadOk == 0) {
     echo 'Error';
 } else {
     //subir
-    if(is_uploaded_file($_FILES["archivo-modelo"]["tmp_name"])){
-        $nombreArchivo = time().".".$extension;
-        move_uploaded_file($_FILES["archivo-modelo"]["tmp_name"], "modelos/".$nombreArchivo);
+    if (is_uploaded_file($_FILES["archivo-modelo"]["tmp_name"])) {
+        $nombreArchivo = time() . "." . $extension;
+        move_uploaded_file($_FILES["archivo-modelo"]["tmp_name"], "modelos/" . $nombreArchivo);
         $_SESSION['nombre_archivo'] = $nombreArchivo;
     }
 

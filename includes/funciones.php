@@ -3,21 +3,24 @@
 require_once('database.php');
 
 /* utilidades */
-function mempty() { // multiple empty
-    foreach(func_get_args() as $arg) {
-        if(empty($arg))
+function mempty()
+{ // multiple empty
+    foreach (func_get_args() as $arg) {
+        if (empty($arg))
             return true;
     }
     return false;
 }
-function redirigirRefIndex() {
+
+function redirigirRefIndex()
+{
     // si no se ha iniciado sesión, regresa a la página
     if (isset($_SERVER['HTTP_REFERER'])) {
-        header('Location:'.$_SERVER['HTTP_REFERER']);
+        header('Location:' . $_SERVER['HTTP_REFERER']);
         exit();
         // o vuelve al index
     }
-    header('Location:login.php');
+    header('Location:index.php');
     exit();
 
 }
@@ -25,12 +28,14 @@ function redirigirRefIndex() {
 
 /* mensajes al usuario */
 
-function crearMensaje($mensaje, $tipo) {
+function crearMensaje($mensaje, $tipo)
+{
     $_SESSION['mensaje'] = $mensaje;
     $_SESSION['tipo-mensaje'] = $tipo; //1-exito, 2-info, 3-error
 }
 
-function mostrarMensaje() {
+function mostrarMensaje()
+{
     global $_SESSION;
 
     if (!isset($_SESSION["mensaje"], $_SESSION["tipo-mensaje"])) {
@@ -65,38 +70,35 @@ function mostrarMensaje() {
 
 
 /*BDD*/
-function crearConexion() {
+function crearConexion()
+{
     if (!isset($db) || $db === NULL) {
         $db = new Database();
     }
     return $db;
 }
 
-function selectModelo($campos, $tabla, $id_modelo, $categoria) {
+function selectModelo($campos, $id_modelo, $categoria, $usuario)
+{
     $con = crearConexion();
     //select
     $sql = "SELECT";
-    foreach ($campos as $clave=>$valor) {
+    foreach ($campos as $clave => $valor) {
         if ($clave === count($campos) - 1) {
             $sql .= " $valor "; //última sin coma
         } else
             $sql .= " $valor, ";
     }
-    /*if (count($campos) == 4) {
-        $sql = "SELECT $campos[0], $campos[1], $campos[2], $campos[3]";
-    }
-    if (count($campos) == 3) {
-        $sql = "SELECT $campos[0], $campos[1], $campos[2]";
-    } else {
-        $sql = "SELECT $campos[0], $campos[1]";
-    }*/
-    $sql .= " FROM $tabla ";
+    $sql .= " FROM modelo ";
     //where
     if ($id_modelo !== null) {
         $sql .= " WHERE id_modelo = $id_modelo";
     }
     if ($categoria !== null) {
         $sql .= " WHERE categoria = $categoria";
+    }
+    if ($usuario !== null) {
+        $sql .= " WHERE usuario = $usuario";
     }
     $sql .= ";";
     //consulta
@@ -106,9 +108,21 @@ function selectModelo($campos, $tabla, $id_modelo, $categoria) {
     return $filas;
 }
 
-function selectUsuarios($usuario = null) {
+function selectCategorias()
+{
     $con = crearConexion();
+    //select
+    $sql = "SELECT * FROM categoria;";
+    //consulta
+    $con->hacerConsulta($sql);
+    $filas = $con->getRows();
+    $con->disconnect();//TODO quitar esto?
+    return $filas;
+}
 
+function selectUsuarios($usuario = null)
+{
+    $con = crearConexion();
     //sql
     $sql = "SELECT *
             FROM usuario";
@@ -120,6 +134,7 @@ function selectUsuarios($usuario = null) {
         }
     }
     $sql .= ";";
+
     //consulta
     $con->hacerConsulta($sql);
     if ($con->getNumRows() === 0) {
@@ -128,57 +143,69 @@ function selectUsuarios($usuario = null) {
     $filas = $con->getRows();
 
     /* si es solo una fila */
+
     if ($con->getNumRows() < 2) {
         $fila = $filas[0];
         return $fila;
     }
+
     $con->disconnect();
     return $filas;
 }
 
 
-function insertModelo($titulo, $ruta, $miniatura, $categ, $usuario)  {
+function insertModelo($titulo, $ruta, $miniatura, $categ, $usuario)
+{
     $con = crearConexion();
     $sql = "INSERT INTO modelo (titulo, ruta, miniatura, categoria, usuario)
             VALUES ('$titulo', '$ruta', '$miniatura', $categ, $usuario);";
     $con->hacerConsulta($sql);
+    if (!$con->getResultado()) {
+        return false;
+    }
     $con->disconnect();
-    return $con->getNumRows();
+
+    return $con->getIdFilaInsertada();
 }
-function insertUsuario($nombre_usuario, $pass)  {
+
+function insertUsuario($nombre_usuario, $pass)
+{
     $con = crearConexion();
-    $sql = "INSERT INTO usuario (nombre_usuario, "."pass".")
+    $sql = "INSERT INTO usuario (nombre_usuario, " . "pass" . ")
             VALUES ('$nombre_usuario', '$pass');";
     $con->hacerConsulta($sql);
+    if (!$con->getResultado()) {
+        return false;
+    }
     $con->disconnect();
     return;
 }
 
 
-
 //delete
 
-function deleteModelo($idModelo)  {
+function deleteModelo($idModelo)
+{
     $con = crearConexion();
     $sql = "DELETE FROM modelo
             WHERE id_modelo = {$idModelo};";
-    var_dump($sql);
     $con->hacerConsulta($sql);
     $con->disconnect();
     return $con->getNumRows();
 }
 
-function deleteUsuario($usuario) {
+function deleteUsuario($usuario)
+{
 
 }
 
-
-
+/* END BDD*/
 
 
 /* sesiones */
 /* usar en upload, etc. */
-function checkRedireccionarLogin() {
+function checkRedireccionarLogin()
+{
     if (!isset($_SESSION['user_id'])) {
         //header("Location:".$_SERVER['PHP_SELF']);
         header('Location:login.php');
@@ -187,32 +214,60 @@ function checkRedireccionarLogin() {
 
 }
 
-function checkSesion() {
+function checkSesion()
+{
     if (!isset($_SESSION['user_id'])) {
         redirigirRefIndex();
     }
 }
 
-/* END BDD*/
+/* elimina archivo y crea mensaje de error/info */
+function eliminarArchivo($idModelo, $rutaModelo, $rutaMiniatura)
+{
 
+    // 1 - Eliminar registro BDD
+    if (isset($idModelo)) {
+        deleteModelo($idModelo);
+        crearMensaje("Eliminado de BDD", 2);
+    }
+
+
+    // 2 - Eliminar archivo modelo
+    if (isset($rutaModelo)) {
+        if (unlink($rutaModelo)) {
+            crearMensaje("Archivo eliminado", 2);
+        } else {
+            crearMensaje("Error al eliminar el archivo", 3);
+        }
+    }
+
+    // 3 - Eliminar miniatura
+    if (isset($rutaMiniatura)) {
+        unlink($rutaMiniatura) || crearMensaje("Error: la miniatura no se ha eliminado", 2);;
+    }
+}
 
 
 /* filtrar inputs */
-
-function textoCorrecto($input) {
+function textoIncorrecto($input)
+{ //devuelve false si es correcto
     // longitud
     $longitudTexto = strlen($input);
-    if ($longitudTexto < 2 || $longitudTexto > 30 ) {
-        return false;
+    if ($longitudTexto > 30) {
+        return 'Demasiado largo';
+    }
+    if ($longitudTexto < 2) {
+        return 'Demasiado corto';
     }
     // comience por número
     if (preg_match('/^[0-9]/', $input)) {
-        return false;
+        return 'No debe comenzar por un número';
     }
     // contenga caracteres especiales
     if (preg_match('/[$€&+,:;=?@#|\'<>.^*()%!-]/', $input)) {
-        return false;
+        return 'No debe contener caracteres especiales';
     }
+    return false;
 
 }
 

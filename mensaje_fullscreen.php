@@ -15,18 +15,23 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
 <!doctype html>
 <html lang="en">
 <head>
-<?php
-$title = 'Información';
-include('includes/head.php');
-?>
+    <?php
+    $title = 'Información';
+    include('includes/head.php');
+    ?>
 </head>
 
 <body>
+
 <?php
 include('includes/header-vacio.php');
-
-include('includes/mensaje_info.php');
 ?>
+
+<div id="mensaje-fullscreen">
+    <?php
+    include('includes/mensaje_info.php');
+    ?>
+</div>
 
 
 </body>
