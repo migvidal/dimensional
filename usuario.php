@@ -24,10 +24,15 @@ extract($resultadoUsuario);
     ?>
 </head>
 <body>
-<div class="wrapper">
     <?php
     include('includes/header.php');
-    include_once('includes/tarjetas_usuario.php');
+    ?>
+<div class="wrapper">
+
+    <h1>Perfil de <?php echo $nombreUsuario; ?></h1>
+
+    <?php
+    include_once('includes/tarjetas_inicio.php');
     ?>
 </div>
 </body>

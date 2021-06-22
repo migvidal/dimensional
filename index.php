@@ -6,22 +6,25 @@
     $title = 'Inicio';
     include_once('includes/head.php');
     ?>
-    <link rel="stylesheet" href="style-viejo.css">
 </head>
 
 <body>
+
+<!-- header nav -->
+<?php
+include_once 'includes/header.php';
+?>
 <div class="wrapper">
-    <!-- header nav -->
-    <?php
-    include_once 'includes/header.php';
-    ?>
 
     <?php
     include('includes/mensaje_info.php');
     ?>
 
     <div class="hero">
-        <p>El mundo en 3 dimensiones</p>
+        <div class="sombreado">
+
+        <h1>El mundo en 3 dimensiones</h1>
+        </div>
     </div>
 
     <section class="destacados">
@@ -36,7 +39,7 @@
 
     <!-- categorias -->
     <?php
-    include 'categorias-inicio.php';
+    include 'includes/categorias-inicio.php';
     ?>
     <section class="about">
         <h2>Acerca de</h2>

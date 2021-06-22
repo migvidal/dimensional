@@ -16,15 +16,15 @@ if (!isset($_SESSION['user_id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir - Dimensional</title>
-    <link rel="stylesheet" href="style-viejo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="wrapper">
+
     <!-- header nav -->
     <?php
     include_once 'includes/header.php';
-    ?>
+    ?><div class="wrapper">
 
     <h1>Seleccionar archivo</h1>
 

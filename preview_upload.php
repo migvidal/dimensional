@@ -64,6 +64,9 @@ $_SESSION['ruta_modelo'] = $rutaModelo;
     <script src="scriptEspecifico.js" defer></script>
 </head>
 <body>
+<?php
+include_once 'includes/header.php';
+?>
 <div class="wrapper">
     <h1>Datos</h1>
     <div class="modelo preview">

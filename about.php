@@ -6,11 +6,11 @@
     $title = 'Acerca de';
     include_once('includes/head.php');
     ?>
-    <link rel="stylesheet" href="style-viejo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="wrapper">
+
     <!-- header nav -->
     <?php
     include_once 'includes/header.php';

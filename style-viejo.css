@@ -87,9 +87,11 @@ section ul > li {
     font-size: 1rem;
     text-decoration: none;
 }
+
 #barra-menu a:hover {
     color: #00f8fe;
 }
+
 #barra-menu a:target {
     border-bottom: 1px solid #00f8fe;
 }
@@ -141,10 +143,12 @@ div.hero {
     background-size: cover;
     position: relative;
 }
+
 div.hero > p {
     display: inline;
     vertical-align: middle;
 }
+
 section {
     padding: 1%;
     margin: 0 auto;

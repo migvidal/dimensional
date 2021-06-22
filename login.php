@@ -27,9 +27,10 @@ if (isset($_SERVER['HTTP_REFERER'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="style-viejo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php include_once ('includes/header-vacio.php')?>
 <div class="wrapper">
     <div class="formulario-centrado">
         <h1>Login</h1>

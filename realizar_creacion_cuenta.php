@@ -22,7 +22,6 @@ $nuevaPass = strip_tags($_POST['nuevapass']);
 $confirmaPass = strip_tags($_POST['confirmapass']);
 
 
-
 /* Validar */
 
 //usuario

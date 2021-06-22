@@ -4,11 +4,13 @@
 $title = "Categorías";
 require_once('includes/head.php'); ?>
 <body>
+<?php
+include_once 'includes/header.php';
+?>
 <div class="wrapper">
 
     <?php
 
-    include_once 'includes/header.php';
     include_once 'includes/menu-categorias.php';//menu lateral
     if (isset($_GET['id_categ'])) {
         $categoria = $_GET['id_categ'];
