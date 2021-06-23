@@ -357,7 +357,7 @@ template {
     --gris: #535353;
     --gris-claro: gray;
     --gris-muy-claro: #dddddd;
-    --color-principal: #00f8fe;
+    --color-principal: #3351c5;
 }
 
 /* /NORMALIZE */
@@ -421,29 +421,44 @@ section ul > li {
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
     z-index: 100;
     vertical-align: middle;
+
+    overflow:hidden;
+    height:auto;
+    max-height:80vh;
+    transition:max-height 0.3s ease-out;
 }
 
 #barra-menu ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
 }
 #barra-menu li {
     flex: 10;
     margin: 15px;
+    display: inline;
+    vertical-align: middle;
 }
 
-#barra-menu .opcion-usuario {
-    flex: 2 auto;
-}
 
 #barra-menu a {
+    display: inline-block;
+}
+
+#barra-menu a,
+#barra-menu button {
     color: black;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
     text-align: center;
-    padding: 20px 5px;
+    background: none;
+    border: none;
+}
+#barra-menu button {
+    background: none;
+    border: none;
 }
 
 #barra-menu a:hover {
@@ -453,6 +468,29 @@ section ul > li {
 #barra-menu a:target {
     border-bottom: 1px solid var(--color-principal);
 }
+#btn-menu {
+    display: inline;
+    margin: 0;
+    position: fixed;
+    top: .8em;
+    right: 0;
+}
+#btn-menu > button{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--gris);
+    padding: 0;
+}
+#btn-menu > button:hover{
+    cursor: pointer;
+}
+
+#logo {
+    height: 1.8em;
+}
+
+
+
 
 /* mensaje error/info */
 div.mensaje-info,
@@ -462,6 +500,7 @@ div.mensaje-generico {
     display: inline-block;
     padding: 5px 40px;
     margin: 20px;
+    border-radius: 5px;
 }
 
 div.mensaje-info {
@@ -633,7 +672,7 @@ form input.display-none {
 }
 
 form input,
-form button {
+form button, #btn-login {
     display: block;
     margin: 10px 0;
     border-radius: 6px;
@@ -641,10 +680,18 @@ form button {
 }
 
 form input[type=submit],
-form button {
+form button, #btn-login {
     background-color: #131313;
     color: whitesmoke;
     border: none;
+    border-radius: 6px;
+}
+#btn-login {
+    text-align: center;
+    background-color: var(--color-principal);
+}
+#btn-login a {
+    color: whitesmoke;
 }
 
 form input[type=submit].btn-eliminar {
@@ -712,10 +759,15 @@ form#datos-subida {
 }
 
 
+@media screen and (min-width: 801px) {
+    #btn-menu {
+        display: none !important;
+    }
+}
 @media screen and (max-width: 800px) {
     #barra-menu {
         overflow: hidden;
-        height: 75vh;
+        min-height: 50px;
     }
     #barra-menu ul {
         flex-wrap: wrap;
@@ -723,7 +775,12 @@ form#datos-subida {
     #barra-menu li {
         flex: 1 1 50%;
     }
-    #barra-menu .opcion-usuario {
-        flex: 1 1 25%;
+    #barra-menu.minimizado {
+        max-height:0;
+        min-height: 5em;
     }
 }
+@media screen and (max-width: 600px) {
+
+}
+

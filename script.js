@@ -1,7 +1,12 @@
 /* JAVASCRIPT GENERAL */
 
 
-/* Variables generales */
+/* Header */
+let btnMenu = document.getElementById("btn-menu");
+let menu = document.getElementById("barra-menu");
+btnMenu.onclick = function () {
+    menu.classList.toggle('minimizado');
+}
 
 
 /* Formularios */
@@ -17,4 +22,5 @@ function confirmarEliminar(evt) {
         console.dir(inputs);
     //this.submit;
 }
+
 

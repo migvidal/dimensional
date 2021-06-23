@@ -33,7 +33,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 <?php include_once ('includes/header-vacio.php')?>
 <div class="wrapper">
     <div class="formulario-centrado">
-        <h1>Login</h1>
+        <h1>Iniciar sesión</h1>
         <form action="validar_login.php" method="POST">
             <label for="user">Usuario </label>
             <input type="text" name="user" id="user">
