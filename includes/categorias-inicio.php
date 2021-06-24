@@ -26,7 +26,7 @@ $resultado = selectCategorias();
 
                 <li>
                     <a class="tarjeta categoria"
-                       href="../categorias.php?id_categ=<?php echo $id_categ ?>"><?php echo $nombre_categ ?></a>
+                       href="categorias.php?id_categ=<?php echo $id_categ ?>"><?php echo $nombre_categ ?></a>
                 </li>
 
                 <?php

@@ -28,7 +28,7 @@ if (mempty($_POST['titulo'],
 // PrepararDatos
 $categ = $_POST['categoria'];
 $idUsuario = $_SESSION['user_id'];
-$titulo = $_POST['titulo'];
+$titulo = strip_tags($_POST['titulo']);
 $rutaModelo = $_SESSION['ruta_modelo'];
 // END PrepararDatos
 

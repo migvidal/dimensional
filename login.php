@@ -39,7 +39,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
             <input type="text" name="user" id="user">
             <br>
             <label for="pass">Contraseña </label>
-            <input type="text" name="pass" id="pass">
+            <input type="password" name="pass" id="pass">
             <input type="submit" value="Iniciar sesión">
         </form>
         <span>No tienes cuenta? <a href="crear_cuenta.php">Crear cuenta</a></span>

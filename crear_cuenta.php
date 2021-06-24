@@ -25,10 +25,10 @@ include_once('includes/header-vacio.php');
             <input type="text" name="nuevousuario" id="nuevousuario">
             <br>
             <label for="nuevapass">Contraseña </label>
-            <input type="text" name="nuevapass" id="nuevapass">
+            <input type="password" name="nuevapass" id="nuevapass">
             <br>
-            <label for="confirmapass">Confirmar contraseña </label>
-            <input type="text" name="confirmapass" id="confirmapass">
+            <label for="confirmapass">Confirmar contraseña</label>
+            <input type="password" name="confirmapass" id="confirmapass">
             <br>
             <input type="submit" value="Crear cuenta">
         </form>

@@ -36,30 +36,35 @@ if (strcmp($nuevaPass, $confirmaPass) !== 0) {
     header("Location:crear_cuenta.php");
     exit();
 }
+
 //que el usuario no exista ya
 $usuarios = selectUsuarios();
 $yaExiste = false;
 foreach ($usuarios as $fila => $datos) {
 
     if (strcmp($nuevoUsuario, $datos['nombre_usuario']) == 0) {
-        $yaExiste = true;
+
+        crearMensaje('El nombre de usuario ya existe', 3);
+        header("Location:crear_cuenta.php");
+        exit();
     }
 }
 
 /* Insertar en BDD */
-if (!$yaExiste) {
-    insertUsuario($nuevoUsuario, $nuevaPass);
+//encriptar contraseña
+$passHash = password_hash($nuevaPass, PASSWORD_DEFAULT);
+//insertar
+if (insertUsuario($nuevoUsuario, $passHash)) {
 
     // éxito
     crearMensaje('Cuenta creada con éxito', 1);
     header("Location:mensaje_fullscreen.php");
-
+    exit();
 } else {
-
-    // error
-    crearMensaje('El nombre de usuario ya existe', 3);
+    crearMensaje('Error al crear cuenta', 2);
     header("Location:crear_cuenta.php");
     exit();
-}
+};
+
 
 ?>

@@ -3,14 +3,16 @@
 require_once('database.php');
 
 /* utilidades */
+// 'empty' múltiple
 function mempty()
-{ // multiple empty
+{
     foreach (func_get_args() as $arg) {
         if (empty($arg))
             return true;
     }
     return false;
 }
+
 
 function redirigirRefIndex()
 {
@@ -93,12 +95,15 @@ function selectModelo($campos, $id_modelo, $categoria, $usuario)
     //where
     if ($id_modelo !== null) {
         $sql .= " WHERE id_modelo = $id_modelo";
-    }
+    } else
     if ($categoria !== null) {
         $sql .= " WHERE categoria = $categoria";
-    }
+    } else
     if ($usuario !== null) {
         $sql .= " WHERE usuario = $usuario";
+    } else {
+        $sql .= " ORDER BY id DESC LIMIT 10"; //para los destacados
+
     }
     $sql .= ";";
     //consulta
@@ -174,11 +179,8 @@ function insertUsuario($nombre_usuario, $pass)
     $sql = "INSERT INTO usuario (nombre_usuario, " . "pass" . ")
             VALUES ('$nombre_usuario', '$pass');";
     $con->hacerConsulta($sql);
-    if (!$con->getResultado()) {
-        return false;
-    }
     $con->disconnect();
-    return;
+    return $con->getResultado();
 }
 
 

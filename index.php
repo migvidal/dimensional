@@ -14,21 +14,19 @@
 <?php
 include_once 'includes/header.php';
 ?>
+<div class="hero">
+
+        <h1>El mundo en 3 dimensiones</h1>
+</div>
 <div class="wrapper">
 
     <?php
     include('includes/mensaje_info.php');
     ?>
 
-    <div class="hero">
-        <div class="sombreado">
-
-        <h1>El mundo en 3 dimensiones</h1>
-        </div>
-    </div>
 
     <section class="destacados">
-        <h2>Destacados</h2>
+        <h2>Últimos</h2>
 
         <?php
         include 'includes/tarjetas_inicio.php';

@@ -11,7 +11,7 @@ $resultado = selectCategorias();
     <ul>
         <?php foreach ($resultado as $fila) {
             extract($fila); ?>
-            <li><a href='categorias.php?id_categ=<?php echo $id_categ; ?>'>
+            <li><a class="tarjeta categoria compact" href='categorias.php?id_categ=<?php echo $id_categ; ?>'>
                     <?php echo $nombre_categ; ?>
                 </a></li>
 

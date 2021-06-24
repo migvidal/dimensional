@@ -8,14 +8,14 @@ require_once('includes/head.php'); ?>
 include_once 'includes/header.php';
 ?>
 <div class="wrapper">
+    <h1>Categorías</h1>
 
     <?php
 
     include_once 'includes/menu-categorias.php';//menu lateral
     if (isset($_GET['id_categ'])) {
         $categoria = $_GET['id_categ'];
-        /*3rem($categoria);*/
-        include_once 'includes/resultados-categoria.php';
+        include_once 'includes/tarjetas_inicio.php';
     }
 
     include_once 'includes/footer.php';

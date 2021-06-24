@@ -7,6 +7,8 @@ $campos = ['id_modelo', 'titulo', 'miniatura'];
 
 if (isset($id_usuario)) {
     $resultado = selectModelo($campos, null, null, $id_usuario);
+} else if (isset($categoria)) {
+    $resultado = selectModelo($campos, null, $categoria, null);
 } else {
     $resultado = selectModelo($campos, null, null, null);
 }

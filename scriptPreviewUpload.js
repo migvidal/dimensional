@@ -27,7 +27,7 @@ function downloadPosterToDataURL() {
     image.src = url;
     image.id = 'poster-generado';
 
-    miniaturaPreview.appendChild(image);
+    miniaturaPreview.insertBefore(image, document.getElementById('downloadPoster'));
     URL.revokeObjectURL(url);
 }
 
