@@ -109,7 +109,6 @@ function selectModelo($campos, $id_modelo, $categoria, $usuario)
     //consulta
     $con->hacerConsulta($sql);
     $filas = $con->getRows();
-    $con->disconnect();//quitar esto?
     return $filas;
 }
 

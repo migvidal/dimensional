@@ -11,7 +11,6 @@ if (isset($_POST['user'], $_POST['pass'])) {
 
     if ($datosUsuario &&
         password_verify($_POST['pass'], $datosUsuario['pass'])
-        //strcmp($datosUsuario['pass'], $_POST['pass']) == 0
     ) {
         /* si pass coincide, guardar sesion y mandar a la página destino */
         $_SESSION['user_id'] = $datosUsuario['id_usuario'];

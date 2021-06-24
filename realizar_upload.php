@@ -47,9 +47,6 @@ list($type, $encodedData) = explode(';', $encodedData);
 list(, $encodedData) = explode(',', $encodedData);
 $decodedData = base64_decode($encodedData);
 
-
-//3rem($encodedData, $miniatura);
-
 // guardar miniatura
 $rutaMiniatura = "miniaturas/" . time() . ".png";
 
