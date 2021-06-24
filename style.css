@@ -389,6 +389,7 @@ footer {
 
 h1 {
     display: block;
+    max-width: 100%;
 }
 
 h2 {
@@ -504,6 +505,13 @@ a.actual {
 #logo {
     height: 1.8em;
 }
+#logo-sin-texto {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    opacity: 80%;
+    margin: 0 auto;
+}
 
 
 /* mensaje error/info */
@@ -543,6 +551,7 @@ div.mensaje-generico {
 /* inicio */
 
 section {
+    padding-top: 30px;
     width: 100%;
 }
 
@@ -642,7 +651,7 @@ section {
     height: 50vh;
     min-height: 200px;
     min-width: 200px;
-    max-width: 500px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -786,6 +795,7 @@ nav.menu-categorias a {
     display: inline-block;
     min-width: 200px;
     min-height: 200px;
+    border-radius: 40px;
 }
 
 #datos-subida {
@@ -794,7 +804,9 @@ nav.menu-categorias a {
     vertical-align: top;
     margin: 0 1.8em;
 }
-
+#datos-subida>form input[type=submit] {
+    background-color: var(--color-principal);
+}
 #miniatura-preview {
     display: inline-block;
     width: 50px;
@@ -858,9 +870,7 @@ nav.menu-categorias a {
         margin: 0;
         width: 100%;
     }
-    #datos-subida>form input[type=submit] {
-        background-color: var(--color-principal);
-    }
+
     #datos-subida {
         margin-top: 25px;
     }

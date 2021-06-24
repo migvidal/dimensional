@@ -40,8 +40,9 @@ include_once 'includes/header.php';
     include 'includes/categorias-inicio.php';
     ?>
     <section class="about">
-        <h2>Acerca de</h2>
-        <p>Este es el lugar perfecto para compartir objetos 3D. Proyecto final de DAW. Creado por Miguel Vidal.</p>
+        <h2>Acerca de Dimensional</h2>
+        <p>¿Un balón de fútbol? ¿La torre Eiffel? Visualiza y comparte modelos 3d con facilidad.
+            Creado por Miguel Vidal.</p>
     </section>
     <section class="faqs">
         <h2>FAQs</h2>
@@ -51,9 +52,7 @@ include_once 'includes/header.php';
         <p>El formato debe ser .glb.</p>
     </section>
 
-    <?php
-    include_once 'includes/footer.php';
-    ?>
+
 </div>
 </body>
 

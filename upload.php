@@ -32,7 +32,7 @@ if (!isset($_SESSION['user_id'])) {
     <form action="preview_upload.php" method="post" enctype="multipart/form-data">
         <label for="archivo-modelo">Elige un modelo 3d (solo extensiones .glb): </label>
         <input type="file" name="archivo-modelo" id="archivo-modelo">
-        <input type="submit" name="submit" value="Subir">
+        <input type="submit" name="submit" value="Continuar">
         <!-- Mensajes error -->
         <?php include('includes/mensaje_info.php'); ?>
     </form>

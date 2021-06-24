@@ -11,19 +11,23 @@
 
 <body>
 
-    <!-- header nav -->
-    <?php
-    include_once 'includes/header.php';
-    ?>
+<!-- header nav -->
+<?php
+include_once 'includes/header.php';
+?>
+<div class="wrapper">
 
     <p>
-        Dimensional es el lugar perfecto para compartir objetos 3D.
-        Proyecto final de DAW. Creado por Miguel Vidal.
+    <h1>Acerca de Dimensional . . . . . . . . . . . . . . </h1>
+    <h3>Dimensional es un lugar para ver y compartir objetos 3D.
+        Proyecto final de Miguel Vidal.</h3>
+    <span>¡Pendiente de ser ampliado!</span>
+    <br>
+    <img id="logo-sin-texto" src="img/logo.png" alt="" srcset="">
     </p>
 
-    <?php
-    include_once 'includes/footer.php';
-    ?>
+</div>
+
 </div>
 </body>
 

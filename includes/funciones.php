@@ -1,6 +1,6 @@
 <?php
 
-require_once('database.php');
+require_once('../database.php');
 
 /* utilidades */
 // 'empty' múltiple
@@ -102,7 +102,7 @@ function selectModelo($campos, $id_modelo, $categoria, $usuario)
     if ($usuario !== null) {
         $sql .= " WHERE usuario = $usuario";
     } else {
-        $sql .= " ORDER BY id DESC LIMIT 10"; //para los destacados
+        $sql .= " ORDER BY id_modelo DESC LIMIT 10"; //para los destacados
 
     }
     $sql .= ";";
@@ -272,19 +272,4 @@ function textoIncorrecto($input)
     return false;
 
 }
-
-/*$db = new Database();
-$db->mi_query("SELECT * FROM pelicula");
-if($db->get_num_rows() == 0){
-    echo "No hay películas<br/>";
-}
-else{
-    $mis_pelis = $db->rows();
-    foreach($mis_pelis as $peli){
-        echo $peli['id_pelicula']." - <strong>".$peli['titulo']."</strong> - ".$peli['sinopsis'].
-            " - ".$peli['director']."<br/>";
-    }
-}
-$db->disconnect();*/
-
 ?>

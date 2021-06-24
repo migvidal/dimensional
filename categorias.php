@@ -18,7 +18,6 @@ include_once 'includes/header.php';
         include_once 'includes/tarjetas_inicio.php';
     }
 
-    include_once 'includes/footer.php';
     ?>
 
     <section id="result-categoria">

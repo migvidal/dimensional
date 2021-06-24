@@ -91,7 +91,7 @@ include_once 'includes/header.php';
                 <!-- /miniatura -->
             </fieldset>
 
-            <input type="submit" name="sub" value="Enviar">
+            <input type="submit" name="sub" value="Subir">
         </form>
         <!-- miniatura -->
     </div>

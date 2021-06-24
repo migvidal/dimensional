@@ -19,9 +19,9 @@ if (empty($resultadoModelo)) {
     redirigirRefIndex();
 }
 
-    foreach ($resultadoModelo as $fila) {
-        extract($fila);
-    }
+foreach ($resultadoModelo as $fila) {
+    extract($fila);
+}
 
 
 // usuario
@@ -53,28 +53,29 @@ extract($resultadoUsuario);
 <?php
 include_once 'includes/header.php';
 ?>
+<div class="modelo">
+    <model-viewer loading='lazy' src='<?php echo $ruta; ?>' alt='<?php echo $titulo ?>' auto-rotate
+                  camera-controls poster='<?php echo $miniatura; ?>'></model-viewer>
+</div>
 <div class="wrapper">
 
 
 
 
 
-    <div class="modelo">
-        <model-viewer loading='lazy' src='<?php echo $ruta; ?>' alt='<?php echo $titulo ?>' auto-rotate
-                      camera-controls poster='<?php echo $miniatura; ?>'></model-viewer>
-    </div>
+
 
     <div class="info-modelo">
         <h1><?php echo $titulo; ?></h1>
 
         <?php
         if (isset($nombre_usuario)) {
-        ?>
-        <h5>Autor:
-            <a href="usuario.php?u=<?php echo $nombre_usuario; ?>">
-                <?php echo $nombre_usuario; ?>
-            </a>
-        </h5>
+            ?>
+            <h5>Autor:
+                <a href="usuario.php?u=<?php echo $nombre_usuario; ?>">
+                    <?php echo $nombre_usuario; ?>
+                </a>
+            </h5>
         <?php } ?>
     </div>
     <div class="controles-modelo">
@@ -94,16 +95,14 @@ include_once 'includes/header.php';
             </form>
             <?php
         }
-}
+        }
         ?>
     </div>
 
 
 </div>
 
-<?php
-include_once 'includes/footer.php';
-?>
+
 </div>
 </body>
 
