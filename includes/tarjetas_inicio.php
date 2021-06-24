@@ -18,7 +18,7 @@ if (isset($id_usuario)) {
 <div class="wrapper-tarjetas">
 
     <?php
-    foreach ($resultado as $fila) {//TODO poner random
+    foreach ($resultado as $fila) {
         extract($fila);
         if (isset($id_modelo, $miniatura, $titulo)) {
 

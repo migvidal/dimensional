@@ -121,7 +121,7 @@ function selectCategorias()
     //consulta
     $con->hacerConsulta($sql);
     $filas = $con->getRows();
-    $con->disconnect();//TODO quitar esto?
+    $con->disconnect();
     return $filas;
 }
 

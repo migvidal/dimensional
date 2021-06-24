@@ -7,7 +7,6 @@
 
 class Database
 {
-    //TODO sacar a archivo externo
     private static $dbHost = "localhost";
     private static $dbUser = "miguel"; // aquí el usuario
     private static $dbPass = "miguel"; // aquí la contraseña

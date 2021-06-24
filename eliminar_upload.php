@@ -15,7 +15,6 @@ if (!isset($_SESSION['user_id'], $_POST['submit'])) {
 // 1 - Eliminar registro BDD
 if (isset($_POST['id_modelo'])) {
     eliminarArchivo($_POST['id_modelo'], null, null);
-    // todo gestionar
 }
 
 // 2 - Eliminar archivo modelo
