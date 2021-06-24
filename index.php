@@ -46,6 +46,8 @@ include_once 'includes/header.php';
     </section>
     <section class="faqs">
         <h2>FAQs</h2>
+        <h3>¿Cómo muevo los objetos 3d?</h3>
+        <p>Puedes girarlo con el dedo o el ratón, y hacer zoom pellizcando.</p>
         <h3>¿Puedo descargar los archivos?</h3>
         <p>Los archivos sólo se pueden visualizar.</p>
         <h3>¿Qué tipos de formato se admiten?</h3>
