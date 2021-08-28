@@ -15,8 +15,12 @@ if (isset($id_usuario)) {
 
 ?>
 
-<div class="wrapper-tarjetas">
 
+
+<div class="container wrapper-tarjetas">
+    <ul class="row">
+
+    <div id="model-list" class="row">
     <?php
     foreach ($resultado as $fila) {
         extract($fila);
@@ -24,13 +28,20 @@ if (isset($id_usuario)) {
 
             ?>
 
-            <a class="tarjeta tarjeta-modelo" href="modelo.php?id_modelo=<?php echo $id_modelo; ?>">
-                <img height="200" width="200" src="<?php echo $miniatura; ?>" alt="<?php echo $titulo; ?>">
-                <h5><?php echo $titulo; ?></h5>
-            </a>
+
+                <div class="col-sm-3">
+
+                    <a class="card" href="modelo.php?id_modelo=<?php echo $id_modelo; ?>">
+                        <img class="card-img-top" src="<?php echo $miniatura; ?>" alt="<?php echo $titulo; ?>">
+                        <h5 class="h5 card-title"><?php echo $titulo; ?></h5>
+                    </a>
+                </div>
+
 
             <?php
         }
     }
     ?>
+        <div id="model-list" class="row">
+        </div>
 </div>
