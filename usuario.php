@@ -24,9 +24,9 @@ extract($resultadoUsuario);
     ?>
 </head>
 <body>
-    <?php
-    include('includes/header.php');
-    ?>
+<?php
+include('includes/header.php');
+?>
 <div class="wrapper">
 
     <h1>Perfil de <?php echo $nombreUsuario; ?></h1>

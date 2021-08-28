@@ -16,7 +16,7 @@ include_once 'includes/header.php';
 ?>
 <div class="hero">
 
-        <h1>El mundo en 3 dimensiones</h1>
+    <h1>El mundo en 3 dimensiones</h1>
 </div>
 <div class="wrapper">
 

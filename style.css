@@ -370,6 +370,7 @@ body {
     width: 100%;
     font-family: Arial, sans-serif;
 }
+
 body {
     padding-top: 5rem;
 }
@@ -412,6 +413,7 @@ nav ul > li,
 section ul > li {
     list-style: none;
 }
+
 a.actual {
     font-weight: bold;
 }
@@ -433,14 +435,14 @@ a.actual {
     background-color: white;
     position: fixed;
     top: 0;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .1);
     z-index: 100;
     vertical-align: middle;
 
-    overflow:hidden;
-    height:auto;
-    max-height:80vh;
-    transition:max-height 0.3s ease-out;
+    overflow: hidden;
+    height: auto;
+    max-height: 80vh;
+    transition: max-height 0.3s ease-out;
 }
 
 #barra-menu li {
@@ -449,6 +451,7 @@ a.actual {
     display: inline;
     vertical-align: middle;
 }
+
 #barra-menu li:first-of-type {
     margin-left: 0 !important;
 }
@@ -467,6 +470,7 @@ a.actual {
     background: none;
     border: none;
 }
+
 #barra-menu button {
     background: none;
     border: none;
@@ -492,19 +496,22 @@ a.actual {
     top: .8em;
     right: 0;
 }
-#btn-menu > button{
+
+#btn-menu > button {
     text-transform: uppercase;
     font-weight: bold;
     color: var(--gris);
     padding: 0;
 }
-#btn-menu > button:hover{
+
+#btn-menu > button:hover {
     cursor: pointer;
 }
 
 #logo {
     height: 1.8em;
 }
+
 #logo-sin-texto {
     display: block;
     width: 100%;
@@ -631,6 +638,7 @@ section {
     padding: 1em;
     min-width: 110px;
 }
+
 .tarjeta.categoria:first-letter {
     text-transform: capitalize;
 }
@@ -722,14 +730,17 @@ form button,
     border: none;
     border-radius: 6px;
 }
+
 #downloadPoster {
     margin-left: 10px;
 }
+
 #btn-login {
     text-align: center;
     background-color: var(--color-principal) !important;
     color: whitesmoke !important;
 }
+
 #btn-login:hover {
     background-color: var(--color-claro) !important;
 }
@@ -751,6 +762,7 @@ select {
     background-color: white;
     border: 1px solid #c8c8c8;
 }
+
 select {
     background-color: white;
 }
@@ -804,9 +816,11 @@ nav.menu-categorias a {
     vertical-align: top;
     margin: 0 1.8em;
 }
-#datos-subida>form input[type=submit] {
+
+#datos-subida > form input[type=submit] {
     background-color: var(--color-principal);
 }
+
 #miniatura-preview {
     display: inline-block;
     width: 50px;
@@ -825,11 +839,13 @@ nav.menu-categorias a {
         display: none !important;
     }
 }
+
 @media screen and (max-width: 800px) {
     #barra-menu {
         overflow: hidden;
         min-height: 50px;
     }
+
     #barra-menu ul {
         flex-wrap: wrap;
     }
@@ -839,16 +855,20 @@ nav.menu-categorias a {
         flex: 1 1 50% !important;
         text-align: left !important;
     }
+
     .index, #btn-menu {
         display: initial !important;
     }
+
     #barra-menu.minimizado {
-        max-height:0;
+        max-height: 0;
         min-height: 5em;
     }
+
     #barra-menu.minimizado li {
         display: none;
     }
+
     nav.menu-categorias {
         margin: 10px;
         padding: 5% 0;
@@ -857,13 +877,16 @@ nav.menu-categorias a {
         max-width: 30vw;
     }
 }
+
 @media screen and (max-width: 600px) {
     nav.menu-categorias li {
         display: inline;
     }
+
     .modelo.preview {
         width: 100%;
     }
+
     #datos-subida,
     #datos-subida form,
     #miniatura-preview {
@@ -874,6 +897,7 @@ nav.menu-categorias a {
     #datos-subida {
         margin-top: 25px;
     }
+
     fieldset {
         padding: 0;
     }

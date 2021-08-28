@@ -60,11 +60,6 @@ include_once 'includes/header.php';
 <div class="wrapper">
 
 
-
-
-
-
-
     <div class="info-modelo">
         <h1><?php echo $titulo; ?></h1>
 

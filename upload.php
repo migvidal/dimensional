@@ -21,10 +21,11 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
 
-    <!-- header nav -->
-    <?php
-    include_once 'includes/header.php';
-    ?><div class="wrapper">
+<!-- header nav -->
+<?php
+include_once 'includes/header.php';
+?>
+<div class="wrapper">
 
     <h1>Seleccionar archivo</h1>
 

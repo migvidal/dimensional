@@ -5,7 +5,7 @@ let urlActual = document.URL.replace('http://', '');
 let selector = "a[href='" + urlActual + "']";
 let enlacesActuales = document.querySelectorAll(selector);
 console.log(enlacesActuales);
-enlacesActuales.forEach((enlace)=>enlace.classList.toggle('actual'));
+enlacesActuales.forEach((enlace) => enlace.classList.toggle('actual'));
 
 
 /* Header */

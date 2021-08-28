@@ -96,15 +96,15 @@ function selectModelo($campos, $id_modelo, $categoria, $usuario)
     if ($id_modelo !== null) {
         $sql .= " WHERE id_modelo = $id_modelo";
     } else
-    if ($categoria !== null) {
-        $sql .= " WHERE categoria = $categoria";
-    } else
-    if ($usuario !== null) {
-        $sql .= " WHERE usuario = $usuario";
-    } else {
-        $sql .= " ORDER BY id_modelo DESC LIMIT 10"; //para los destacados
+        if ($categoria !== null) {
+            $sql .= " WHERE categoria = $categoria";
+        } else
+            if ($usuario !== null) {
+                $sql .= " WHERE usuario = $usuario";
+            } else {
+                $sql .= " ORDER BY id_modelo DESC LIMIT 10"; //para los destacados
 
-    }
+            }
     $sql .= ";";
     //consulta
     $con->hacerConsulta($sql);
@@ -271,4 +271,5 @@ function textoIncorrecto($input)
     return false;
 
 }
+
 ?>

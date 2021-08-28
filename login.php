@@ -30,7 +30,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php include_once ('includes/header-vacio.php')?>
+<?php include_once('includes/header-vacio.php') ?>
 <div class="wrapper">
     <div class="formulario-centrado">
         <h1>Iniciar sesión</h1>
